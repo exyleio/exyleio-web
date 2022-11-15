@@ -4,4 +4,4 @@
 - temporary testing site: https://exyleio-web.web.app
 - submit issues [here](https://github.com/exyleio/exyleio/issues)
 
-## [Documentation](https://github.com/exyleio/exyleio/tree/master/docs/guides/developers/projects/exyleio-web)
+## [Documentation](https://github.com/exyleio/exyleio/tree/master/docs/projects/exyleio-web)
