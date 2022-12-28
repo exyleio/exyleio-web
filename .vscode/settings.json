@@ -1,5 +1,12 @@
 {
-	"cSpell.words": ["Exyle", "exyleio", "Leaderboard", "solidjs", "tailwindcss"],
+	"cSpell.words": [
+		"Exyle",
+		"exyleio",
+		"iconify",
+		"Leaderboard",
+		"solidjs",
+		"tailwindcss"
+	],
 
 	// prevent warning when using tailwind directives
 	"css.lint.unknownAtRules": "ignore",
