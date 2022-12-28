@@ -1,4 +1,7 @@
 /build/
+pb_data/
+redis_data/
+api_log/
 
 # Created by https://www.toptal.com/developers/gitignore/api/svelte,yarn,node,firebase,osx
 # Edit at https://www.toptal.com/developers/gitignore?templates=svelte,yarn,node,firebase,osx

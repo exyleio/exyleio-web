@@ -1,0 +1,37 @@
+version: "3"
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server /etc/redis/redis.conf
+    network_mode: host
+    volumes:
+      - ./redis_data:/data
+      - ./redis.conf:/etc/redis/redis.conf
+
+  pocketbase:
+    image: spectado/pocketbase:latest
+    restart: unless-stopped
+    command: pocketbase serve --http=0.0.0.0:8090
+    network_mode: host
+    volumes:
+      - ./pb_data:/pb_data
+
+  api:
+    depends_on:
+      - redis
+      - pocketbase
+    image: developomp/exyleio-api:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./api_log:/log
+
+  web:
+    depends_on:
+      - api
+    restart: unless-stopped
+    network_mode: host
+    build: .
+    volumes:
+      - .:/app
