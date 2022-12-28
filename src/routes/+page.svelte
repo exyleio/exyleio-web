@@ -1,5 +1,9 @@
+<script>
+	import { TITLE_PREFIX } from "$lib/constants"
+</script>
+
 <svelte:head>
-	<title>Home</title>
+	<title>{TITLE_PREFIX}Home</title>
 </svelte:head>
 
 <h2>Home</h2>
