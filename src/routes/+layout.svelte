@@ -1,26 +1,24 @@
 <script>
-	import Header from "$lib/components/Header.svelte"
+	import Header from "$lib/components/Header/index.svelte"
 	import Footer from "$lib/components/Footer.svelte"
 
 	import "./styles.scss"
 </script>
 
-<div class="app">
-	<Header />
+<Header />
 
-	<main>
-		<slot />
-	</main>
+<main>
+	<slot />
+</main>
 
-	<Footer />
-</div>
+<Footer />
 
 <style lang="scss">
 	main {
 		/* size */
-		@apply h-screen w-full;
+		@apply h-full;
 
-		/* positioning */
+		/* layout */
 		@apply flex items-center justify-center flex-col;
 	}
 </style>
