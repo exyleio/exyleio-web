@@ -10,19 +10,9 @@ services:
       - ./redis_data:/data
       - ./redis.conf:/etc/redis/redis.conf
 
-  pocketbase:
-    image: ghcr.io/muchobien/pocketbase:latest
-    restart: unless-stopped
-    command: ["pocketbase", "serve", "--http=0.0.0.0:8090"]
-    ports:
-      - 8090:8090
-    volumes:
-      - ./pb_data:/pb_data
-
   api:
     depends_on:
       - redis
-      - pocketbase
     image: developomp/exyleio-api:latest
     restart: unless-stopped
     ports:
