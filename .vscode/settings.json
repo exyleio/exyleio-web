@@ -5,6 +5,7 @@
 		"iconify",
 		"Leaderboard",
 		"solidjs",
+		"sveltekit",
 		"tailwindcss"
 	],
 
