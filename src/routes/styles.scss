@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 html,
-body {
+body,
+#app {
 	// layout
 	@apply flex flex-col;
 

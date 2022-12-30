@@ -8,6 +8,7 @@
 	</head>
 
 	<body data-sveltekit-prefetch>
-		%sveltekit.body%
+		<!-- https://kit.svelte.dev/docs/project-structure#project-files sveltekit.body should not live directly inside <body> -->
+		<div id="app">%sveltekit.body%</div>
 	</body>
 </html>
