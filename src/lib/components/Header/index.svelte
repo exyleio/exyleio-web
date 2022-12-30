@@ -1,5 +1,10 @@
 <script>
 	import { page } from "$app/stores"
+
+	import { session } from "$lib/stores/session"
+
+	import LoginButton from "$lib/components/Header/LoginButton.svelte"
+	import LogOutButton from "$lib/components/Header/LogOutButton.svelte"
 </script>
 
 <header>
@@ -18,6 +23,12 @@
 				</li>
 			</ul>
 		</nav>
+
+		{#if $session}
+			<LogOutButton />
+		{:else}
+			<LoginButton />
+		{/if}
 	</div>
 </header>
 
