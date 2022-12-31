@@ -4,7 +4,7 @@ import { writable } from "svelte/store"
 import { browser } from "$app/environment"
 import { auth } from "$lib/stores/auth"
 
-export const session = writable<User | null>()
+export const session = writable<User | null>(null)
 
 /**
  * if we're using session, we need to keep the server-side auth-state in sync with the client
