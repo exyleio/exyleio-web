@@ -1,8 +1,12 @@
 /**
- * [Firebase API authentication error codes](https://firebase.google.com/docs/auth/admin/errors)
+ * Authentication error codes
  */
 export type AuthCode =
+	// custom codes
 	| "" // no error
+	| "user-object-is-null"
+
+	// https://firebase.google.com/docs/auth/admin/errors
 	| "auth/claims-too-large"
 	| "auth/email-already-exists"
 	| "auth/id-token-expired"
@@ -57,3 +61,8 @@ export type AuthCode =
 	| "auth/uid-already-exists"
 	| "auth/unauthorized-continue-uri"
 	| "auth/user-not-found"
+
+	// undocumented
+	| "auth/missing-email"
+	| "auth/wrong-password"
+	| "auth/email-already-in-use"
