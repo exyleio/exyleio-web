@@ -1,5 +1,6 @@
 import type { FirebaseApp } from "firebase/app"
 import type { Auth } from "firebase/auth"
+import type { AuthCode } from "$lib/types"
 
 import { derived, type Readable } from "svelte/store"
 import { browser, dev } from "$app/environment"
@@ -29,53 +30,37 @@ const createAuth = () => {
 		if (browser) init()
 	})
 
-	/**
-	 * @param email - User email address
-	 * @param password - User password
-	 * @returns  Empty string if sign-in was successful,
-	 * [Firebase API authentication error code](https://firebase.google.com/docs/auth/admin/errors) otherwise.
-	 */
-	async function signUp(email: string, password: string): Promise<string> {
+	async function signUp(email: string, password: string): Promise<AuthCode> {
 		const { createUserWithEmailAndPassword } = await import("firebase/auth")
 
 		try {
 			await createUserWithEmailAndPassword(auth, email, password)
 		} catch ({ code }) {
-			return code as string
+			return code as AuthCode
 		}
 
 		return ""
 	}
 
-	/**
-	 * @param email - User email address
-	 * @param password - User password
-	 * @returns Empty string if sign-in was successful,
-	 * [Firebase API authentication error code](https://firebase.google.com/docs/auth/admin/errors) otherwise.
-	 */
-	async function signIn(email: string, password: string): Promise<string> {
+	async function signIn(email: string, password: string): Promise<AuthCode> {
 		const { signInWithEmailAndPassword } = await import("firebase/auth")
 
 		try {
 			await signInWithEmailAndPassword(auth, email, password)
 		} catch ({ code }) {
-			return code as string
+			return code as AuthCode
 		}
 
 		return ""
 	}
 
-	/**
-	 * @returns Empty string if sign-in was successful,
-	 * [Firebase API authentication error code](https://firebase.google.com/docs/auth/admin/errors) otherwise.
-	 */
-	async function signOut() {
+	async function signOut(): Promise<AuthCode> {
 		const { signOut } = await import("firebase/auth")
 
 		try {
 			await signOut(auth)
 		} catch ({ code }) {
-			return code as string
+			return code as AuthCode
 		}
 
 		return ""
