@@ -27,7 +27,7 @@
 	}
 
 	async function signUp() {
-		const authCode = await auth.signUp(email, password)
+		const authCode = await auth.signUp(username, email, password)
 		if (dev) console.log("Sign Up auth code", authCode)
 
 		// reset errors  before updating them
