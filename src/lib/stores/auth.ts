@@ -31,10 +31,14 @@ const createAuth = () => {
 	})
 
 	async function signUp(email: string, password: string): Promise<AuthCode> {
-		const { createUserWithEmailAndPassword } = await import("firebase/auth")
+		const { createUserWithEmailAndPassword, sendEmailVerification } = await import("firebase/auth")
 
 		try {
 			await createUserWithEmailAndPassword(auth, email, password)
+
+			if (!auth.currentUser) return "user-object-is-null"
+
+			await sendEmailVerification(auth.currentUser)
 		} catch ({ code }) {
 			return code as AuthCode
 		}
