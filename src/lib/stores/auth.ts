@@ -1,10 +1,10 @@
 import type { FirebaseApp } from "firebase/app"
 import type { Auth } from "firebase/auth"
-import type { AuthCode } from "$lib/types"
+import { type Readable, derived } from "svelte/store"
 
-import { derived, type Readable } from "svelte/store"
 import { browser, dev } from "$app/environment"
 import { app } from "$lib/stores/app"
+import type { AuthCode } from "$lib/types"
 
 /**
  * load the firebase auth client as a store and provide an API to access its methods

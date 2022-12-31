@@ -10,6 +10,11 @@
 		"tailwindcss"
 	],
 
+	"editor.codeActionsOnSave": {
+		// for import sorting and stuff
+		"source.fixAll.eslint": true
+	},
+
 	// prevent warning when using tailwind directives
 	"css.lint.unknownAtRules": "ignore",
 	"scss.lint.unknownAtRules": "ignore"

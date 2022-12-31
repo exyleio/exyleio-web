@@ -1,6 +1,6 @@
 import type { FirebaseApp } from "firebase/app"
-
 import { readable } from "svelte/store"
+
 import { browser } from "$app/environment"
 import { firebaseConfig } from "$lib/constants"
 

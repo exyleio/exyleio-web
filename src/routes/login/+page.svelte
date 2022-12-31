@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { A,Button, Helper, Input, Label } from "flowbite-svelte"
+	
+	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
 	import { TITLE_PREFIX } from "$lib/constants"
 	import { auth } from "$lib/stores/auth"
-
-	import { Input, Label, Button, Helper, A } from "flowbite-svelte"
-	import { dev } from "$app/environment"
 
 	let email = ""
 	let password = ""

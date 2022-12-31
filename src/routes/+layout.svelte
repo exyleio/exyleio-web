@@ -1,8 +1,8 @@
 <script>
-	import Header from "$lib/components/Header/index.svelte"
-	import Footer from "$lib/components/Footer.svelte"
-
 	import "./styles.scss"
+	
+	import Footer from "$lib/components/Footer.svelte"
+	import Header from "$lib/components/Header/index.svelte"
 </script>
 
 <Header />
