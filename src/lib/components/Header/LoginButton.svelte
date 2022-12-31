@@ -1,4 +1,4 @@
-<a href="/login">Sign In</a>
+<a href="/login">Log In</a>
 
 <style lang="scss">
 	a {
