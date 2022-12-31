@@ -3,61 +3,88 @@
 	import { TITLE_PREFIX } from "$lib/constants"
 	import { auth } from "$lib/stores/auth"
 
-	let email: string
-	let password: string
-	let error: string
+	import { Input, Label, Button, Helper, A } from "flowbite-svelte"
+	import { dev } from "$app/environment"
 
-	async function signUp() {
-		error = await auth.signUp(email, password)
-		if (error === "") throw goto("/")
-	}
+	let email = ""
+	let password = ""
+
+	let emailColor: undefined | "red" = undefined
+	let passwordColor: undefined | "red" = undefined
+
+	let emailError = ""
+	let passwordError = ""
+
+	$: inputHasProblems = email === "" || password === ""
 
 	async function signIn() {
-		error = await auth.signIn(email, password)
-		if (error === "") throw goto("/")
+		const authCode = await auth.signIn(email, password)
+		if (dev) console.log("Sign In auth code:", authCode)
+
+		// reset errors before updating them
+		emailError = ""
+		passwordError = ""
+
+		switch (authCode) {
+			// no error
+			case "": {
+				throw goto("/")
+			}
+
+			case "auth/user-not-found": {
+				emailError = "User with this Email does not exist"
+				break
+			}
+
+			case "auth/invalid-email": {
+				emailError = "Invalid Email"
+				break
+			}
+
+			case "auth/invalid-password": {
+				passwordError = "Invalid Password"
+				break
+			}
+			case "auth/wrong-password": {
+				passwordError = "Wrong Password"
+				break
+			}
+		}
 	}
 </script>
 
 <svelte:head>
-	<title>{TITLE_PREFIX}Login</title>
+	<title>{TITLE_PREFIX}Log In</title>
 </svelte:head>
 
-<div class="mx-auto max-w-xl p-5">
-	<div class="text-center">
-		<h1 class="my-3 text-3xl font-semibold text-gray-700">Log In</h1>
-	</div>
-
-	<form on:submit|preventDefault>
-		<input
-			type="text"
-			placeholder="Username"
-			required
-			bind:value={email}
-			class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-		/>
-		<input
-			type="password"
-			placeholder="Password"
-			required
-			bind:value={password}
-			class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-		/>
-
-		<button
-			class="w-full px-2 py-4 text-white bg-indigo-500 rounded-md  focus:bg-indigo-600 focus:outline-none"
-			on:click={signUp}>Sign Up</button
-		>
-
-		<button
-			class="w-full px-2 py-4 text-white bg-indigo-500 rounded-md  focus:bg-indigo-600 focus:outline-none"
-			on:click={signIn}>Login</button
-		>
-
-		{#if error}
-			Error: {error}
-		{/if}
-	</form>
+<div class="text-center">
+	<h1 class="my-3 text-3xl font-semibold text-gray-700">Log In</h1>
 </div>
 
+<form on:submit|preventDefault>
+	<div>
+		<Label for="email" color={emailColor}>Email</Label>
+		<Input id="email" color={emailColor} type="text" required bind:value={email} />
+		<Helper color="red">{emailError}</Helper>
+	</div>
+
+	<div>
+		<Label for="password" color={passwordColor}>Password</Label>
+		<Input id="password" color={passwordColor} type="password" required bind:value={password} />
+		<Helper color="red">{passwordError}</Helper>
+	</div>
+
+	<Button class="mt-2" on:click={signIn} disabled={inputHasProblems}>Login</Button>
+
+	<Label>Don't have an account yet? <A href="/signup">Create an Account</A>!</Label>
+</form>
+
 <style lang="scss">
+	form {
+		/* size */
+		@apply w-96;
+
+		/* layout */
+		@apply flex flex-col gap-2;
+	}
 </style>
