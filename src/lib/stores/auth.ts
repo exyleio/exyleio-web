@@ -30,55 +30,49 @@ const createAuth = () => {
 		if (browser) init()
 	})
 
-	async function signUp(username: string, email: string, password: string): Promise<AuthCode> {
-		const { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } = await import(
-			"firebase/auth"
-		)
-
-		try {
-			const { user } = await createUserWithEmailAndPassword(auth, email, password)
-
-			await sendEmailVerification(user)
-			await updateProfile(user, { displayName: username })
-		} catch ({ code }) {
-			return code as AuthCode
-		}
-
-		return ""
-	}
-
-	async function signIn(email: string, password: string, remember: boolean): Promise<AuthCode> {
-		const { signInWithEmailAndPassword } = await import("firebase/auth")
-
-		try {
-			// default mode is 'LOCAL'
-			if (!remember) auth.setPersistence({ type: "SESSION" })
-
-			await signInWithEmailAndPassword(auth, email, password)
-		} catch ({ code }) {
-			return code as AuthCode
-		}
-
-		return ""
-	}
-
-	async function signOut(): Promise<AuthCode> {
-		const { signOut } = await import("firebase/auth")
-
-		try {
-			await signOut(auth)
-		} catch ({ code }) {
-			return code as AuthCode
-		}
-
-		return ""
-	}
-
 	return {
 		subscribe,
-		signUp,
-		signIn,
-		signOut,
+		signUp: async (username: string, email: string, password: string): Promise<AuthCode> => {
+			const { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } = await import(
+				"firebase/auth"
+			)
+
+			try {
+				const { user } = await createUserWithEmailAndPassword(auth, email, password)
+
+				await sendEmailVerification(user)
+				await updateProfile(user, { displayName: username })
+			} catch ({ code }) {
+				return code as AuthCode
+			}
+
+			return ""
+		},
+		signIn: async (email: string, password: string, remember: boolean): Promise<AuthCode> => {
+			const { signInWithEmailAndPassword } = await import("firebase/auth")
+
+			try {
+				// default mode is 'LOCAL'
+				if (!remember) auth.setPersistence({ type: "SESSION" })
+
+				await signInWithEmailAndPassword(auth, email, password)
+			} catch ({ code }) {
+				return code as AuthCode
+			}
+
+			return ""
+		},
+		signOut: async (): Promise<AuthCode> => {
+			const { signOut } = await import("firebase/auth")
+
+			try {
+				await signOut(auth)
+			} catch ({ code }) {
+				return code as AuthCode
+			}
+
+			return ""
+		},
 	}
 }
 
