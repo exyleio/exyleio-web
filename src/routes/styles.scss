@@ -6,8 +6,8 @@ html,
 body,
 #app {
 	// layout
-	@apply flex flex-col;
+	@apply flex flex-col items-center;
 
 	// size
-	@apply h-full;
+	@apply w-full h-full;
 }

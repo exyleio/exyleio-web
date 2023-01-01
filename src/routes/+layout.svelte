@@ -1,6 +1,6 @@
 <script>
 	import "./styles.scss"
-	
+
 	import Footer from "$lib/components/Footer.svelte"
 	import Header from "$lib/components/Header/index.svelte"
 </script>
@@ -16,7 +16,7 @@
 <style lang="scss">
 	main {
 		/* size */
-		@apply h-full;
+		@apply h-full max-w-screen-lg;
 
 		/* layout */
 		@apply flex items-center justify-center flex-col;
