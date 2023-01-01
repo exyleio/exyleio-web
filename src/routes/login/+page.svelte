@@ -6,6 +6,8 @@
 	import { TITLE_PREFIX } from "$lib/constants"
 	import { auth } from "$lib/stores/auth"
 
+	let rememberMe = false
+
 	let email = ""
 	let password = ""
 
@@ -15,7 +17,7 @@
 	$: inputHasProblems = email === "" || password === ""
 
 	async function signIn() {
-		const authCode = await auth.signIn(email, password)
+		const authCode = await auth.signIn(email, password, rememberMe)
 		if (dev) console.log("Sign In auth code:", authCode)
 
 		// reset errors before updating them
@@ -89,6 +91,10 @@
 				bind:value={password}
 			/>
 			<Helper color="red">{passwordError}</Helper>
+		</div>
+
+		<div class="flex items-start">
+			<Checkbox bind:checked={rememberMe}>Remember me</Checkbox>
 		</div>
 
 		<Button class="mt-2" on:click={signIn} disabled={inputHasProblems}>Login</Button>

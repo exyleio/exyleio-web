@@ -47,10 +47,13 @@ const createAuth = () => {
 		return ""
 	}
 
-	async function signIn(email: string, password: string): Promise<AuthCode> {
+	async function signIn(email: string, password: string, remember: boolean): Promise<AuthCode> {
 		const { signInWithEmailAndPassword } = await import("firebase/auth")
 
 		try {
+			// default mode is 'LOCAL'
+			if (!remember) auth.setPersistence({ type: "SESSION" })
+
 			await signInWithEmailAndPassword(auth, email, password)
 		} catch ({ code }) {
 			return code as AuthCode
