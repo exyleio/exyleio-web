@@ -73,6 +73,15 @@ const createAuth = () => {
 
 			return ""
 		},
+		sendVerificationEmail: async (): Promise<AuthCode> => {
+			const { sendEmailVerification } = await import("firebase/auth")
+
+			if (!auth.currentUser) return "user-object-is-null"
+
+			await sendEmailVerification(auth.currentUser)
+
+			return ""
+		},
 	}
 }
 
