@@ -1,15 +1,10 @@
 <script>
 	import { TITLE_PREFIX } from "$lib/constants"
+	import { Heading } from "flowbite-svelte"
 </script>
 
 <svelte:head>
 	<title>{TITLE_PREFIX}Home</title>
 </svelte:head>
 
-<h2>Home</h2>
-
-<style lang="scss">
-	h2 {
-		@apply text-3xl font-bold;
-	}
-</style>
+<Heading tag="h2">Home</Heading>

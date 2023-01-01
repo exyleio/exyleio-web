@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { A, Button, Card, Checkbox, Helper, Input, Label } from "flowbite-svelte"
+	import { A, Button, Card, Checkbox, Heading, Helper, Input, Label } from "flowbite-svelte"
 
 	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
@@ -65,7 +65,7 @@
 
 <Card>
 	<div class="text-center">
-		<h1 class="my-3 text-3xl font-semibold text-gray-700">Log In</h1>
+		<Heading tag="h2">Log In</Heading>
 	</div>
 
 	<form on:submit|preventDefault>
@@ -100,7 +100,7 @@
 		<Button class="mt-2" on:click={signIn} disabled={inputHasProblems}>Login</Button>
 	</form>
 
-	<Label defaultClass="text-sm font-medium text-gray-500 dark:text-gray-300">
+	<Label defaultClass="text-sm">
 		Don't have an account yet? <A href="/signup">Create an Account</A>!
 	</Label>
 </Card>

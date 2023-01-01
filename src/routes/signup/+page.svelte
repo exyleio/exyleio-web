@@ -1,5 +1,15 @@
 <script lang="ts">
-	import { A, Button, Card, Checkbox, Helper, Input, Label, Popover } from "flowbite-svelte"
+	import {
+		A,
+		Button,
+		Card,
+		Checkbox,
+		Heading,
+		Helper,
+		Input,
+		Label,
+		Popover,
+	} from "flowbite-svelte"
 
 	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
@@ -85,7 +95,7 @@
 </svelte:head>
 
 <Card size="xl">
-	<h1 class="text-center mb-3 text-3xl font-semibold text-gray-700">Sign Up</h1>
+	<Heading tag="h2" class="text-center mb-3">Sign Up</Heading>
 
 	<form on:submit|preventDefault>
 		<div class="container">
