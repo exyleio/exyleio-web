@@ -2,6 +2,8 @@
 // - performance is identical (rendered html is the same)
 // - .env requires `PUBLIC_` prefix
 
+export const DOCS_URL = "https://exyleio-docs.web.app"
+
 export const TITLE_PREFIX = "Exyle.io | "
 
 export const firebaseConfig = {
