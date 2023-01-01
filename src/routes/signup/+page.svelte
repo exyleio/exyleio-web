@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { A, Button, Checkbox, Helper, Input, Label, Popover } from "flowbite-svelte"
+	import { A, Button, Card, Checkbox, Helper, Input, Label, Popover } from "flowbite-svelte"
 
 	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
@@ -84,79 +84,79 @@
 	<title>{TITLE_PREFIX}Sign Up</title>
 </svelte:head>
 
-<div class="text-center">
-	<h1 class="my-3 text-3xl font-semibold text-gray-700">Sign Up</h1>
-</div>
+<Card size="xl">
+	<h1 class="text-center mb-3 text-3xl font-semibold text-gray-700">Sign Up</h1>
 
-<form on:submit|preventDefault>
-	<div class="container">
-		<div>
-			<Label for="email" color={emailError === "" ? undefined : "red"}>Email</Label>
-			<Input
-				id="email"
-				color={emailError === "" ? undefined : "red"}
-				type="text"
-				required
-				bind:value={email}
-			/>
-			<Helper color="red">{emailError}</Helper>
-			<Popover triggeredBy="#email" placement="bottom">
-				Used for user verification, password reset, change of terms, etc.
-			</Popover>
+	<form on:submit|preventDefault>
+		<div class="container">
+			<div>
+				<Label for="email" color={emailError === "" ? undefined : "red"}>Email</Label>
+				<Input
+					id="email"
+					color={emailError === "" ? undefined : "red"}
+					type="text"
+					required
+					bind:value={email}
+				/>
+				<Helper color="red">{emailError}</Helper>
+				<Popover triggeredBy="#email" placement="bottom">
+					Used for user verification, password reset, change of terms, etc.
+				</Popover>
+			</div>
+
+			<div>
+				<Label for="username" color={usernameError === "" ? undefined : "red"}>Username</Label>
+				<Input
+					id="username"
+					color={usernameError === "" ? undefined : "red"}
+					type="text"
+					required
+					bind:value={username}
+				/>
+				<Helper color="red">{usernameError}</Helper>
+
+				<Popover triggeredBy="#username" placement="bottom">
+					Others will recognize you by this name.
+				</Popover>
+			</div>
+
+			<div>
+				<Label for="password" color={passwordError === "" ? undefined : "red"}>Password</Label>
+				<Input
+					id="password"
+					color={passwordError === "" ? undefined : "red"}
+					type="password"
+					required
+					bind:value={password}
+				/>
+				<Helper color="red">{passwordError}</Helper>
+				<Popover triggeredBy="#password" placement="bottom">Must have at least 6 Letters.</Popover>
+			</div>
+
+			<div>
+				<Label for="confirm_password" color={passwordConfirmError === "" ? undefined : "red"}
+					>Confirm password</Label
+				>
+				<Input
+					id="confirm_password"
+					color={passwordConfirmError === "" ? undefined : "red"}
+					type="password"
+					required
+					bind:value={passwordConfirm}
+				/>
+				<Helper color="red">{passwordConfirmError}</Helper>
+			</div>
 		</div>
 
-		<div>
-			<Label for="username" color={usernameError === "" ? undefined : "red"}>Username</Label>
-			<Input
-				id="username"
-				color={usernameError === "" ? undefined : "red"}
-				type="text"
-				required
-				bind:value={username}
-			/>
-			<Helper color="red">{usernameError}</Helper>
+		<Checkbox required bind:checked={agreed}>
+			I agree with the&nbsp;<A href="https://exyleio-docs.web.app/tos">ToS</A>&nbsp; and the&nbsp;<A
+				href="https://exyleio-docs.web.app/eula">EULA</A
+			>.
+		</Checkbox>
 
-			<Popover triggeredBy="#username" placement="bottom">
-				Others will recognize you by this name.
-			</Popover>
-		</div>
-
-		<div>
-			<Label for="password" color={passwordError === "" ? undefined : "red"}>Password</Label>
-			<Input
-				id="password"
-				color={passwordError === "" ? undefined : "red"}
-				type="password"
-				required
-				bind:value={password}
-			/>
-			<Helper color="red">{passwordError}</Helper>
-			<Popover triggeredBy="#password" placement="bottom">Must have at least 6 Letters.</Popover>
-		</div>
-
-		<div>
-			<Label for="confirm_password" color={passwordConfirmError === "" ? undefined : "red"}
-				>Confirm password</Label
-			>
-			<Input
-				id="confirm_password"
-				color={passwordConfirmError === "" ? undefined : "red"}
-				type="password"
-				required
-				bind:value={passwordConfirm}
-			/>
-			<Helper color="red">{passwordConfirmError}</Helper>
-		</div>
-	</div>
-
-	<Checkbox required bind:checked={agreed}>
-		I agree with the&nbsp;<A href="https://exyleio-docs.web.app/tos">ToS</A>&nbsp; and the&nbsp;<A
-			href="https://exyleio-docs.web.app/eula">EULA</A
-		>.
-	</Checkbox>
-
-	<Button on:click={signUp} disabled={inputHasProblems}>Sign Up</Button>
-</form>
+		<Button on:click={signUp} disabled={inputHasProblems}>Sign Up</Button>
+	</form>
+</Card>
 
 <style lang="scss">
 	form {
