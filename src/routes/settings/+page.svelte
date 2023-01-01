@@ -5,16 +5,12 @@
 
 	import Danger from "./danger.svelte"
 	import Profile from "./profile.svelte"
-	import { goto } from "$app/navigation"
-	import { session } from "$lib/stores/session"
-	import { browser } from "$app/environment"
 	import { onMount } from "svelte"
+	import redirectIfNotLoggedIn from "$lib/redirectIfNotLoggedIn"
 
 	onMount(async () => {
 		// if user is not logged in, redirect them to login page
-		setTimeout(() => {
-			if (browser && $session === null) goto("/login")
-		}, 1500)
+		redirectIfNotLoggedIn("/login")
 	})
 </script>
 
