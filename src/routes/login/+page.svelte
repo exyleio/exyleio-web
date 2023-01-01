@@ -74,7 +74,7 @@
 			<Input
 				id="email"
 				color={emailError === "" ? undefined : "red"}
-				type="text"
+				type="email"
 				required
 				bind:value={email}
 			/>
