@@ -16,7 +16,7 @@ services:
     image: developomp/exyleio-api:latest
     restart: unless-stopped
     ports:
-      - 8000:8000
+      - 80:80
     volumes:
       - ./api_log:/log
 
