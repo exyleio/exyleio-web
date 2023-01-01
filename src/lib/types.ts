@@ -66,3 +66,4 @@ export type AuthCode =
 	| "auth/missing-email"
 	| "auth/wrong-password"
 	| "auth/email-already-in-use"
+	| "auth/network-request-failed"

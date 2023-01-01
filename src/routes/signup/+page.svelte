@@ -41,6 +41,17 @@
 				throw goto("/")
 			}
 
+			case "auth/network-request-failed": {
+				const errorMsg = "Cannot access the authentication server"
+				emailError = errorMsg
+				passwordError = errorMsg
+				emailError = errorMsg
+				usernameError = errorMsg
+				passwordError = errorMsg
+				passwordConfirmError = errorMsg
+				break
+			}
+
 			case "auth/email-already-in-use": {
 				emailError = "Email already in use"
 				break

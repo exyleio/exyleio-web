@@ -28,6 +28,13 @@
 				throw goto("/")
 			}
 
+			case "auth/network-request-failed": {
+				const errorMsg = "Cannot access the authentication server"
+				emailError = errorMsg
+				passwordError = errorMsg
+				break
+			}
+
 			case "auth/user-not-found": {
 				emailError = "User with this Email does not exist"
 				break
