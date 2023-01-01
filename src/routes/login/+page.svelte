@@ -6,7 +6,7 @@
 	import { TITLE_PREFIX } from "$lib/constants"
 	import { auth } from "$lib/stores/auth"
 
-	let rememberMe = false
+	let rememberMe = true
 
 	let email = ""
 	let password = ""
