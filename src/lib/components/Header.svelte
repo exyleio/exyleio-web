@@ -56,10 +56,10 @@
 <style lang="scss">
 	header {
 		/* layout */
-		@apply flex justify-center;
+		@apply flex justify-center items-center;
 
 		/* size */
-		@apply h-16 w-full;
+		@apply h-[96px] w-full;
 
 		/* prevent other elements from drawing over it*/
 		@apply z-50;
