@@ -52,6 +52,11 @@
 				break
 			}
 
+			case "auth/weak-password": {
+				passwordError = "Password must be at least 6 letters"
+				break
+			}
+
 			case "auth/email-already-in-use": {
 				emailError = "Email already in use"
 				break
@@ -126,7 +131,7 @@
 				bind:value={password}
 			/>
 			<Helper color="red">{passwordError}</Helper>
-			<Popover triggeredBy="#password" placement="bottom">Must have at least 8 Letters.</Popover>
+			<Popover triggeredBy="#password" placement="bottom">Must have at least 6 Letters.</Popover>
 		</div>
 
 		<div>
