@@ -9,9 +9,6 @@
 	let email = ""
 	let password = ""
 
-	let emailColor: undefined | "red" = undefined
-	let passwordColor: undefined | "red" = undefined
-
 	let emailError = ""
 	let passwordError = ""
 
@@ -63,14 +60,26 @@
 
 <form on:submit|preventDefault>
 	<div>
-		<Label for="email" color={emailColor}>Email</Label>
-		<Input id="email" color={emailColor} type="text" required bind:value={email} />
+		<Label for="email" color={emailError === "" ? undefined : "red"}>Email</Label>
+		<Input
+			id="email"
+			color={emailError === "" ? undefined : "red"}
+			type="text"
+			required
+			bind:value={email}
+		/>
 		<Helper color="red">{emailError}</Helper>
 	</div>
 
 	<div>
-		<Label for="password" color={passwordColor}>Password</Label>
-		<Input id="password" color={passwordColor} type="password" required bind:value={password} />
+		<Label for="password" color={passwordError === "" ? undefined : "red"}>Password</Label>
+		<Input
+			id="password"
+			color={passwordError === "" ? undefined : "red"}
+			type="password"
+			required
+			bind:value={password}
+		/>
 		<Helper color="red">{passwordError}</Helper>
 	</div>
 
