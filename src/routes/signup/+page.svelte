@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { A, Button, Checkbox, Helper, Input, Label, Popover } from "flowbite-svelte"
-	
+
 	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
 	import { TITLE_PREFIX } from "$lib/constants"
