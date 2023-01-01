@@ -1,9 +1,17 @@
 <script>
 	import "./styles.scss"
+	import { SvelteToast } from "@zerodevx/svelte-toast"
 
 	import Footer from "$lib/components/Footer.svelte"
-	import Header from "$lib/components/Header/index.svelte"
+	import Header from "$lib/components/Header.svelte"
+
+	const toastOptions = {
+		// disable toast expiration
+		initial: 0,
+	}
 </script>
+
+<SvelteToast options={toastOptions} />
 
 <Header />
 

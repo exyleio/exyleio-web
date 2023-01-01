@@ -23,6 +23,7 @@
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"@zerodevx/svelte-toast": "next",
 		"autoprefixer": "^10.4.13",
 		"classnames": "^2.3.2",
 		"eslint": "^8.16.0",
