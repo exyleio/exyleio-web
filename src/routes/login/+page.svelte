@@ -27,7 +27,7 @@
 		switch (authCode) {
 			// no error
 			case "": {
-				throw goto("/")
+				goto("/")
 			}
 
 			case "auth/network-request-failed": {
