@@ -13,7 +13,6 @@
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.0",
-		"@iconify-icons/fa6-brands": "^1.2.8",
 		"@iconify/svelte": "^3.0.1",
 		"@neoconfetti/svelte": "^1.0.0",
 		"@playwright/test": "1.25.0",
