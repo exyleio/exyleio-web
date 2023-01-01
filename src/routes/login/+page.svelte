@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { A, Button, Helper, Input, Label } from "flowbite-svelte"
+	import { A, Button, Card, Checkbox, Helper, Input, Label } from "flowbite-svelte"
 
 	import { dev } from "$app/environment"
 	import { goto } from "$app/navigation"
@@ -61,46 +61,53 @@
 	<title>{TITLE_PREFIX}Log In</title>
 </svelte:head>
 
-<div class="text-center">
-	<h1 class="my-3 text-3xl font-semibold text-gray-700">Log In</h1>
-</div>
-
-<form on:submit|preventDefault>
-	<div>
-		<Label for="email" color={emailError === "" ? undefined : "red"}>Email</Label>
-		<Input
-			id="email"
-			color={emailError === "" ? undefined : "red"}
-			type="text"
-			required
-			bind:value={email}
-		/>
-		<Helper color="red">{emailError}</Helper>
+<Card>
+	<div class="text-center">
+		<h1 class="my-3 text-3xl font-semibold text-gray-700">Log In</h1>
 	</div>
 
-	<div>
-		<Label for="password" color={passwordError === "" ? undefined : "red"}>Password</Label>
-		<Input
-			id="password"
-			color={passwordError === "" ? undefined : "red"}
-			type="password"
-			required
-			bind:value={password}
-		/>
-		<Helper color="red">{passwordError}</Helper>
-	</div>
+	<form on:submit|preventDefault>
+		<div>
+			<Label for="email" color={emailError === "" ? undefined : "red"}>Email</Label>
+			<Input
+				id="email"
+				color={emailError === "" ? undefined : "red"}
+				type="text"
+				required
+				bind:value={email}
+			/>
+			<Helper color="red">{emailError}</Helper>
+		</div>
 
-	<Button class="mt-2" on:click={signIn} disabled={inputHasProblems}>Login</Button>
+		<div>
+			<Label for="password" color={passwordError === "" ? undefined : "red"}>Password</Label>
+			<Input
+				id="password"
+				color={passwordError === "" ? undefined : "red"}
+				type="password"
+				required
+				bind:value={password}
+			/>
+			<Helper color="red">{passwordError}</Helper>
+		</div>
 
-	<Label>Don't have an account yet? <A href="/signup">Create an Account</A>!</Label>
-</form>
+		<Button class="mt-2" on:click={signIn} disabled={inputHasProblems}>Login</Button>
+	</form>
+
+	<Label defaultClass="text-sm font-medium text-gray-500 dark:text-gray-300">
+		Don't have an account yet? <A href="/signup">Create an Account</A>!
+	</Label>
+</Card>
 
 <style lang="scss">
 	form {
 		/* size */
-		@apply w-96;
+		@apply w-full;
 
 		/* layout */
-		@apply flex flex-col gap-2;
+		@apply flex flex-col;
+
+		/* spacing */
+		@apply gap-2 mb-2;
 	}
 </style>
