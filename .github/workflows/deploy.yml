@@ -3,6 +3,7 @@ on:
   push:
     paths-ignore:
       - "README.md"
+      - LICENSE.md
     branches:
       - master
   workflow_dispatch:
