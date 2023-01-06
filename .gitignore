@@ -2,8 +2,8 @@
 redis_data/
 api_log/
 
-# Created by https://www.toptal.com/developers/gitignore/api/svelte,yarn,node,firebase,osx
-# Edit at https://www.toptal.com/developers/gitignore?templates=svelte,yarn,node,firebase,osx
+# Created by https://www.toptal.com/developers/gitignore/api/svelte,node,firebase,osx
+# Edit at https://www.toptal.com/developers/gitignore?templates=svelte,node,firebase,osx
 
 ### Firebase ###
 .idea
@@ -189,21 +189,4 @@ Temporary Items
 .svelte-kit/
 package
 
-### yarn ###
-# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-
-.yarn/*
-!.yarn/releases
-!.yarn/patches
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-# if you are NOT using Zero-installs, then:
-# comment the following lines
-!.yarn/cache
-
-# and uncomment the following lines
-# .pnp.*
-
-# End of https://www.toptal.com/developers/gitignore/api/svelte,yarn,node,firebase,osx
+# End of https://www.toptal.com/developers/gitignore/api/svelte,node,firebase,osx
