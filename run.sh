@@ -13,4 +13,4 @@ firebase login
 firebase emulators:start --only auth &
 
 # start docker containers
-docker compose up --build --pull always
+docker compose up --build --remove-orphans --pull always
