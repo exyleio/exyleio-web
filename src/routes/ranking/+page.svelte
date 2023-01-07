@@ -7,4 +7,6 @@
 	<title>{TITLE_PREFIX}Ranking</title>
 </svelte:head>
 
-<Heading tag="h2">Ranking</Heading>
+<div>
+	<Heading tag="h2">Ranking</Heading>
+</div>

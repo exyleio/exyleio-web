@@ -7,4 +7,6 @@
 	<title>{TITLE_PREFIX}About</title>
 </svelte:head>
 
-<Heading tag="h2">About</Heading>
+<div>
+	<Heading tag="h2">About</Heading>
+</div>

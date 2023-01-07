@@ -24,7 +24,7 @@
 <style lang="scss">
 	main {
 		/* size */
-		@apply h-full max-w-screen-lg;
+		@apply h-full w-full max-w-screen-lg;
 
 		/* layout */
 		@apply flex items-center justify-center flex-col;

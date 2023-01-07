@@ -7,4 +7,6 @@
 	<title>{TITLE_PREFIX}Home</title>
 </svelte:head>
 
-<Heading tag="h2">Home</Heading>
+<div>
+	<Heading tag="h2">Home</Heading>
+</div>
