@@ -1,10 +1,34 @@
 import type { User } from "firebase/auth"
-import { writable } from "svelte/store"
+import type { Readable } from "svelte/store"
+import { derived, writable } from "svelte/store"
 
 import { browser } from "$app/environment"
+import { page } from "$app/stores"
 import { auth } from "$lib/stores/auth"
 
-export const session = writable<User | null>(null)
+// dedupe updates so our store only notifies when changes happen
+function dedupe<T>(store: Readable<T>): Readable<T> {
+	let previous: T
+
+	return derived(store, ($value, set) => {
+		if ($value !== previous) {
+			previous = $value
+			set($value)
+		}
+	})
+}
+
+// allows us to override the page data session
+// without having to invalidate LayoutData
+const internal = writable<User | null>()
+
+// derived store from page data to provide our session
+const external = dedupe(derived(page, ($page) => $page.data.session))
+
+export const session: Readable<User | null> = derived(
+	[internal, external],
+	([$internal, $external]) => $internal || $external
+)
 
 /**
  * if we're using session, we need to keep the server-side auth-state in sync with the client
@@ -20,7 +44,7 @@ async function syncSession() {
 	auth.subscribe(($auth) => {
 		if ($auth) {
 			onIdTokenChanged($auth, async (user) => {
-				session.set(user)
+				internal.set(user)
 			})
 		}
 	})
