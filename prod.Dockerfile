@@ -9,7 +9,7 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 COPY . .
-RUN APP_ENV=development npx vite build
+RUN npx vite build
 
 # Run
 FROM nginx:alpine-slim
