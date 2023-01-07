@@ -2,7 +2,7 @@
 	"name": "exyleio-web",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host 0.0.0.0",
 		"start": "firebase emulators:start --only auth & docker compose up --build",
 		"build": "vite build",
 		"preview": "vite preview",

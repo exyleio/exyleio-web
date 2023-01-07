@@ -24,7 +24,8 @@ services:
     depends_on:
       - api
     restart: unless-stopped
-    network_mode: host
+    ports:
+      - 5173:5173
     build: .
     volumes:
       - .:/app
