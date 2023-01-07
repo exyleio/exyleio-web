@@ -9,7 +9,7 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 COPY . .
-RUN echo PUBLIC_USE_PRODUCTION_API=true > .env
+RUN echo PUBLIC_USE_PRODUCTION_API=false > .env
 RUN npx vite build
 
 # Run
