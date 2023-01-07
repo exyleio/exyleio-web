@@ -68,3 +68,11 @@ export type AuthCode =
 	| "auth/email-already-in-use"
 	| "auth/network-request-failed"
 	| "auth/weak-password"
+
+export interface Player {
+	id: string
+	username: string
+	tags: Tag[]
+}
+
+type Tag = "Supporter" | "Moderator" | "POMP" | "Contributor" | "ClanLeader" | "ClanCoLeader"

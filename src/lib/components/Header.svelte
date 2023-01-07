@@ -7,6 +7,7 @@
 		Avatar,
 		Button,
 		Dropdown,
+		DropdownDivider,
 		DropdownItem,
 		Navbar,
 		NavBrand,
@@ -30,10 +31,13 @@
 					{$session.displayName || ""}
 				</Button>
 				<Dropdown inline triggeredBy="#user_avatar">
+					<DropdownItem href="/profile">Profile</DropdownItem>
+
+					<DropdownDivider />
+
 					<DropdownItem href="/settings">Account Settings</DropdownItem>
 
 					<DropdownItem
-						slot="footer"
 						on:click={() => {
 							auth.signOut()
 						}}>Sign out</DropdownItem

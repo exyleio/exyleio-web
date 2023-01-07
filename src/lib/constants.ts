@@ -2,6 +2,11 @@
 // - performance is identical (rendered html is the same)
 // - .env requires `PUBLIC_` prefix
 
+import { PUBLIC_USE_PRODUCTION_API } from "$env/static/public"
+
+export const API_URL =
+	PUBLIC_USE_PRODUCTION_API === "false" ? "http://localhost" : "http://exyleio-api.developomp.com"
+
 export const DOCS_URL = "https://exyleio-docs.web.app"
 
 export const TITLE_PREFIX = "Exyle.io | "
