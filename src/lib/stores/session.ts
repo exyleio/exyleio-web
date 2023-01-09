@@ -23,7 +23,13 @@ function dedupe<T>(store: Readable<T>): Readable<T> {
 const internal = writable<User | null>()
 
 // derived store from page data to provide our session
-const external = dedupe(derived(page, ($page) => $page.data.session))
+const external = dedupe(
+	derived(
+		page,
+		// use null if page session is undefined
+		($page) => $page.data.session || null
+	)
+)
 
 export const session: Readable<User | null> = derived(
 	[internal, external],
