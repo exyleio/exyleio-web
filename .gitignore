@@ -1,6 +1,7 @@
 /build/
-redis_data/
+redis_stack_data/
 api_log/
+serviceAccountKey.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/svelte,node,firebase,osx
 # Edit at https://www.toptal.com/developers/gitignore?templates=svelte,node,firebase,osx

@@ -6,6 +6,9 @@ export type AuthCode =
 	| "" // no error
 	| "user-object-is-null"
 
+	// exyle.io API stuff
+	| "user-not-found"
+
 	// https://firebase.google.com/docs/auth/admin/errors
 	| "auth/claims-too-large"
 	| "auth/email-already-exists"
@@ -70,9 +73,12 @@ export type AuthCode =
 	| "auth/weak-password"
 
 export interface Player {
-	id: string
+	uid: string
 	username: string
+	email_verified: boolean
+	created_at: number
+	last_login: number
 	tags: Tag[]
 }
 
-type Tag = "Supporter" | "Moderator" | "POMP" | "Contributor" | "ClanLeader" | "ClanCoLeader"
+type Tag = "supporter" | "moderator" | "pomp" | "contributor" | "clan_leader" | "clan_co_leader"

@@ -3,7 +3,7 @@
  */
 
 import { API_URL } from "./constants"
-import type { Player } from "./types"
+import type { AuthCode, Player } from "./types"
 
 export default {
 	/**
@@ -11,9 +11,10 @@ export default {
 	 *
 	 * @param uid - The firebase uid of a user
 	 */
-	async getProfile(uid: string): Promise<Player> {
-		const response = await fetch(`${API_URL}/players/${uid}`)
+	async getProfile(uid: string): Promise<Player | AuthCode> {
+		const response = await fetch(`${API_URL}/v1/players/${uid}`)
 
-		return await response.json()
+		if (response.ok) return await response.json()
+		else return (await response.json()).detail
 	},
 }
