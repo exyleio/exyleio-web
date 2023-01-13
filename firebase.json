@@ -1,0 +1,10 @@
+{
+	"hosting": [
+		{
+			"target": "exyleio-web",
+			"public": "build",
+			"cleanUrls": true,
+			"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+		}
+	]
+}
