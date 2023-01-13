@@ -46,16 +46,16 @@ jobs:
         with:
           args: use exyleio
         env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXYLEIO }}
+          GCP_SA_KEY: ${{ secrets.EXYLEIO_GCP_SERVICE_ACCOUNT_KEY }}
       - name: Apply target
         uses: w9jds/firebase-action@master
         with:
           args: target:apply hosting exyleio-web exyleio-web
         env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXYLEIO }}
+          GCP_SA_KEY: ${{ secrets.EXYLEIO_GCP_SERVICE_ACCOUNT_KEY }}
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXYLEIO }}
+          GCP_SA_KEY: ${{ secrets.EXYLEIO_GCP_SERVICE_ACCOUNT_KEY }}
