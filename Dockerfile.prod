@@ -1,9 +1,0 @@
-FROM node:hydrogen-alpine
-WORKDIR /app
-COPY package.json package-lock.json ./
-COPY . .
-RUN npm install
-RUN echo PUBLIC_USE_PRODUCTION_API=true > .env
-RUN npx vite build
-EXPOSE 3000
-CMD ["node", "./build"]
